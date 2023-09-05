@@ -25,7 +25,7 @@ public class TeamService {
     }
 
     public TeamMember getTeamMember(int id) throws TeamMemberIdNotFoundException {
-        TeamMember teamMember = repository.findByTeamMemberId(id);
+        TeamMember teamMember = repository.findById(id);
         if (teamMember != null){
             return teamMember;
         }
@@ -35,7 +35,7 @@ public class TeamService {
     }
 
     public  void deleteTeamMember(int id) throws TeamMemberIdNotFoundException{
-        Optional<TeamMember> optionalTeamMember = Optional.ofNullable(repository.findByTeamMemberId(id));
+        Optional<TeamMember> optionalTeamMember = Optional.ofNullable(repository.findById(id));
         optionalTeamMember.ifPresentOrElse(
                 teamMember -> {
                     repository.delete(teamMember);
