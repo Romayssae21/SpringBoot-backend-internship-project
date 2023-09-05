@@ -1,7 +1,7 @@
 package com.Romayssae.collaborateur.service;
 
 import com.Romayssae.collaborateur.dto.TeamDto;
-import com.Romayssae.collaborateur.entity.TeamMember;
+import com.Romayssae.collaborateur.dao.TeamMember;
 import com.Romayssae.collaborateur.exceptionHandler.TeamMemberIdNotFoundException;
 import com.Romayssae.collaborateur.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;

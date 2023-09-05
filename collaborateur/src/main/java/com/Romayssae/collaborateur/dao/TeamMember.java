@@ -1,4 +1,4 @@
-package com.Romayssae.collaborateur.entity;
+package com.Romayssae.collaborateur.dao;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

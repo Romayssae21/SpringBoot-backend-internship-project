@@ -1,7 +1,7 @@
 package com.Romayssae.collaborateur.controller;
 
 import com.Romayssae.collaborateur.dto.TeamDto;
-import com.Romayssae.collaborateur.entity.TeamMember;
+import com.Romayssae.collaborateur.dao.TeamMember;
 import com.Romayssae.collaborateur.exceptionHandler.TeamMemberIdNotFoundException;
 import com.Romayssae.collaborateur.service.TeamService;
 import jakarta.validation.Valid;
@@ -10,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.SQLOutput;
 import java.util.List;
 
 @RestController
