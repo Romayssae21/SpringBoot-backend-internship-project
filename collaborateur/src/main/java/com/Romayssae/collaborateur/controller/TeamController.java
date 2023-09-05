@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLOutput;
+import java.util.List;
 
 @RestController
 @RequestMapping("api/v1")
@@ -23,11 +24,14 @@ public class TeamController {
         return new ResponseEntity<>(service.saveTeamMember(teamDto), HttpStatus.CREATED);
     }
 
-    //@GetMapping("fetchAllTeamMembers")
-
     @GetMapping("/{id}")
     public ResponseEntity<TeamMember> getTeamMember(@PathVariable int id) throws TeamMemberIdNotFoundException{
         return ResponseEntity.ok(service.getTeamMember(id));
+    }
+
+    @GetMapping("fetchAllTeamMembers")
+    public ResponseEntity<List<TeamMember>> gztAllTeamMembers(){
+        return ResponseEntity.ok(service.getAllTeamMembers());
     }
 
     @DeleteMapping("/{id}")
