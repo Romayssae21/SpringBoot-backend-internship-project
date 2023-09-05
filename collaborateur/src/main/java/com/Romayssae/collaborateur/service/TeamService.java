@@ -7,6 +7,8 @@ import com.Romayssae.collaborateur.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class TeamService {
     @Autowired
@@ -31,4 +33,23 @@ public class TeamService {
             throw new TeamMemberIdNotFoundException("The Team member not found for id = "+id);
         }
     }
+
+    public  void deleteTeamMember(int id) throws TeamMemberIdNotFoundException{
+        Optional<TeamMember> optionalTeamMember = Optional.ofNullable(repository.findByTeamMemberId(id));
+        optionalTeamMember.ifPresentOrElse(
+                teamMember -> {
+                    repository.delete(teamMember);
+                },
+        ()->{
+            try {
+                throw  new TeamMemberIdNotFoundException
+                        ("TeamMember with ID" + id + " cannot be deleted, member not found");
+            } catch (TeamMemberIdNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        );
+    }
+
+
 }
