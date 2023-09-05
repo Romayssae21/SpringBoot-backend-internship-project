@@ -30,4 +30,11 @@ public class TeamController {
         return ResponseEntity.ok(service.getTeamMember(id));
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String > deleteTeamMember(@PathVariable int id) throws TeamMemberIdNotFoundException {
+        service.deleteTeamMember(id);
+        return new ResponseEntity<>("TeamMember with ID " + id + " has been deleted", HttpStatus.OK);
+
+    }
+
 }
