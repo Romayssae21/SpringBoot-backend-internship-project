@@ -3,7 +3,7 @@ package com.Romayssae.collaborateur.controller;
 import com.Romayssae.collaborateur.dto.TeamDto;
 import com.Romayssae.collaborateur.dao.TeamMember;
 import com.Romayssae.collaborateur.exceptionHandler.TeamMemberIdNotFoundException;
-import com.Romayssae.collaborateur.service.TeamService;
+import com.Romayssae.collaborateur.service.TeamServiceInterface;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,7 +18,7 @@ import java.util.List;
 public class TeamController {
 
     @Autowired
-    private TeamService service;
+    private TeamServiceInterface service;
 
     @GetMapping("/welcome")
     public String welcome(){
