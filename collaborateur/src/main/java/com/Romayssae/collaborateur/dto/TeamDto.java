@@ -18,5 +18,7 @@ public class TeamDto {
     @NotNull
     @Pattern(regexp="^\\d{10}$", message = "Invalid mobile number")
     private String phoneNumber;
+    @NotNull
+    private String roleColab;
 
 }

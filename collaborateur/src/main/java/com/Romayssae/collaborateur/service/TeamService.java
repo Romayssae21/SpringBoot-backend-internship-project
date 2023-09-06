@@ -21,11 +21,12 @@ public class TeamService {
                 .lastName(dto.getLastName())
                 .email(dto.getEmail())
                 .phoneNumber(dto.getPhoneNumber())
+                .roleColab(dto.getRoleColab())
                 .build();
         return repository.save(teamMember);
     }
 
-    public TeamMember getTeamMember(int id) throws TeamMemberIdNotFoundException {
+    public TeamMember getTeamMember(Long id) throws TeamMemberIdNotFoundException {
         TeamMember teamMember = repository.findById(id);
         if (teamMember != null){
             return teamMember;
@@ -38,12 +39,10 @@ public class TeamService {
     public List<TeamMember> getAllTeamMembers(){
         return repository.findAll();
     }
-    public  void deleteTeamMember(int id) throws TeamMemberIdNotFoundException{
+    public  void deleteTeamMember(Long id) throws TeamMemberIdNotFoundException{
         Optional<TeamMember> optionalTeamMember = Optional.ofNullable(repository.findById(id));
         optionalTeamMember.ifPresentOrElse(
-                teamMember -> {
-                    repository.delete(teamMember);
-                },
+                teamMember -> repository.delete(teamMember),
         ()->{
             try {
                 throw  new TeamMemberIdNotFoundException

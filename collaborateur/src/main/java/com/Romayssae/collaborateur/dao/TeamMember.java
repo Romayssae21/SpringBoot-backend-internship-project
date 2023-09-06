@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 public class TeamMember {
     @Id
     @GeneratedValue
-    private Integer id;
+    private Long id;
     private String firstName;
     private String lastName;
     private Integer age;

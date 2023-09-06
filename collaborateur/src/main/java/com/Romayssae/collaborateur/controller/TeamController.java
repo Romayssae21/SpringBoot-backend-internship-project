@@ -24,17 +24,17 @@ public class TeamController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TeamMember> getTeamMember(@PathVariable int id) throws TeamMemberIdNotFoundException{
+    public ResponseEntity<TeamMember> getTeamMember(@PathVariable Long id) throws TeamMemberIdNotFoundException{
         return ResponseEntity.ok(service.getTeamMember(id));
     }
 
     @GetMapping("fetchAllTeamMembers")
-    public ResponseEntity<List<TeamMember>> gztAllTeamMembers(){
+    public ResponseEntity<List<TeamMember>> getAllTeamMembers(){
         return ResponseEntity.ok(service.getAllTeamMembers());
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String > deleteTeamMember(@PathVariable int id) throws TeamMemberIdNotFoundException {
+    public ResponseEntity<String > deleteTeamMember(@PathVariable Long id) throws TeamMemberIdNotFoundException {
         service.deleteTeamMember(id);
         return new ResponseEntity<>("TeamMember with ID " + id + " has been deleted", HttpStatus.OK);
 
