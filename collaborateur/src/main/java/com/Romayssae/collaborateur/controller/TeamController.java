@@ -18,6 +18,11 @@ public class TeamController {
 
     @Autowired
     private TeamService service;
+
+    @GetMapping("/welcome")
+    public String welcome(){
+        return "Welcome everyone on the non secure endpoint !";
+    }
     @PostMapping("/save")
     public ResponseEntity<TeamMember> saveTeamMember(@RequestBody @Valid TeamDto teamDto){
         return new ResponseEntity<>(service.saveTeamMember(teamDto), HttpStatus.CREATED);
