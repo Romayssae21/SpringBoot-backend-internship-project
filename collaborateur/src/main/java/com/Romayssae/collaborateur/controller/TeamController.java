@@ -8,6 +8,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,11 +34,12 @@ public class TeamController {
         return ResponseEntity.ok(service.getTeamMember(id));
     }
 
-    @GetMapping("fetchAllTeamMembers")
+    @GetMapping("/fetchAllTeamMembers")
     public ResponseEntity<List<TeamMember>> getAllTeamMembers(){
         return ResponseEntity.ok(service.getAllTeamMembers());
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<String > deleteTeamMember(@PathVariable Long id) throws TeamMemberIdNotFoundException {
         service.deleteTeamMember(id);
