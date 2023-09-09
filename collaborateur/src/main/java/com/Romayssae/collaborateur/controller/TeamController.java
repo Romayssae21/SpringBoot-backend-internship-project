@@ -29,6 +29,11 @@ public class TeamController {
         return new ResponseEntity<>(service.saveTeamMember(teamDto), HttpStatus.CREATED);
     }
 
+    @GetMapping("/save")
+    public String getSave(){
+        return "Get save method to set token";
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<TeamMember> getTeamMember(@PathVariable Long id) throws TeamMemberIdNotFoundException{
         return ResponseEntity.ok(service.getTeamMember(id));
