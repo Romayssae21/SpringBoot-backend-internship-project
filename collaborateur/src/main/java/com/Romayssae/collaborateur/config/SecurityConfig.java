@@ -63,7 +63,6 @@ public class SecurityConfig {
                 //.oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
                 .logout((logout) -> logout.addLogoutHandler(clearSiteData));
 
-
         return http.build();
     }
 }
